@@ -327,7 +327,8 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    vndk_package
+    vndk_package \
+    libstdc++.vendor
 
 # Vibrator
 PRODUCT_PACKAGES += \
