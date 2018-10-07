@@ -130,6 +130,7 @@ media.aac_51_output_enabled=true \
 media.msm8956hw=0 \
 media.stagefright.audio.sink=280 \
 vendor.mm.enable.qcom_parser=1048575 \
+mm.enable.sec.smoothstreaming=true \
 mm.enable.smoothstreaming=true \
 mmp.enable.3g2=true \
 vendor.audio.hw.aac.encoder=true \
