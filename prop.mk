@@ -105,6 +105,10 @@ vendor.gralloc.enable_fb_ubwc=1
 PRODUCT_PROPERTY_OVERRIDES += \
 drm.service.enabled=true
 
+# Disable touch heatmap
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.input.video_enabled=false
+
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.qfp=false
