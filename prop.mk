@@ -175,6 +175,7 @@ persist.dbg.vt_avail_ovr=1 \
 persist.dbg.wfc_avail_ovr=1 \
 persist.vendor.radio.apm_sim_not_pwdn=1 \
 persist.vendor.radio.multisim_switch_support=true \
+persist.radio.reboot_on_modem_change=true \
 persist.radio.multisim.config=dsds \
 persist.vendor.radio.custom_ecc=1 \
 persist.vendor.radio.rat_on=combine \
