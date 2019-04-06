@@ -58,6 +58,7 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.iwlan_operation_mode=legacy
 persist.vendor.radio.multisim_switch_support=true
 persist.radio.reboot_on_modem_change=true
+persist.radio.aosp_usr_pref_sel=true
 service.qti.ims.enabled=1
 
 # SurfaceFlinger
