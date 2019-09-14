@@ -16,6 +16,10 @@
 
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
+#define BTM_DEF_LOCAL_NAME   "Xiaomi Redmi 5"
+
+#pragma push_macro("PROPERTY_VALUE_MAX")
+
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    7
@@ -27,7 +31,8 @@
 #define BT_CLEAN_TURN_ON_DISABLED 1
 #define BTM_SCO_ENHANCED_SYNC_ENABLED FALSE
 
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-#define BTM_WBS_INCLUDED TRUE
-#define BTIF_HF_WBS_PREFERRED TRUE
+/* Enable HFP WBS feature */
+#define BTIF_HF_CLIENT_WBS_INCLUDED TRUE
+#pragma pop_macro("PROPERTY_VALUE_MAX")
+
 #endif
