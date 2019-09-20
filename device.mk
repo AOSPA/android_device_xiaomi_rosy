@@ -359,6 +359,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# Include vendor/qcom/common modules
+TARGET_COMMON_QTI_COMPONENTS := \
+    bt \
+    perf
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.2 \
