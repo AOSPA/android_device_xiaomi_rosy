@@ -430,6 +430,7 @@ else
             echo 70 > /sys/module/process_reclaim/parameters/pressure_max
             echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
             echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
+            echo 1 > /sys/module/lowmemorykiller/parameters/enable_lmk
             ;;
         esac
     fi
