@@ -30,5 +30,9 @@ type rild_file, file_type, vendor_file_type;
 # Rmt
 type debugfs_rmt, debugfs_type, fs_type;
 
+#slub-debug
+type sysfs_slab_zshandle_storeuser, fs_type, sysfs_type;
+type sysfs_slab_zspage_storeuser, fs_type, sysfs_type;
+
 # Thermal engine
 type thermal_data_file, file_type, core_data_file_type, data_file_type;
