@@ -141,7 +141,8 @@ PRODUCT_PACKAGES += \
 
 # Dexpreopt - SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUIGoogle
+    SystemUI \
+    NexusLauncherRelease
 
 # Display
 PRODUCT_PACKAGES += \
