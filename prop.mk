@@ -1,27 +1,34 @@
 #
-# system.prop for msm8953-common
+# system.prop for rosy
 #
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-af.fast_track_multiplier=2 \
+af.fast_track_multiplier=1 \
 audio.deep_buffer.media=true \
 audio.offload.disable=true \
 audio.offload.min.duration.secs=30 \
 audio.offload.video=true \
-ro.config.media_vol_steps=25 \
-ro.config.vc_call_vol_steps=7 \
+persist.vendor.audio.hw.binder.size_kbyte=1024 \
+persist.vendor.audio.fluence.speaker=true \
+persist.vendor.audio.fluence.voicecall=true \
+persist.vendor.audio.fluence.voicerec=false \
 persist.vendor.btstack.enable.splita2dp=false \
+ro.config.media_vol_steps=25 \
+ro.config.vc_call_vol_steps=15 \
+ro.vendor.audio.sdk.fluencetype=fluence \
 ro.vendor.audio.sdk.ssr=false \
 vendor.audio.flac.sw.decoder.24bit=true \
 vendor.audio.offload.buffer.size.kb=64 \
 vendor.audio.offload.gapless.enabled=true \
 vendor.audio.offload.multiaac.enable=true \
 vendor.audio.offload.multiple.enabled=false \
-vendor.audio.offload.track.enable=true \
+vendor.audio.offload.passthrough=false \
+vendor.audio.offload.track.enable=false \
 vendor.audio.parser.ip.buffer.size=0 \
 vendor.audio.playback.mch.downsample=true \
 vendor.audio.pp.asphere.enabled=false \
+vendor.audio.read.wsatz.type=true \
 vendor.audio.safx.pbe.enabled=true \
 vendor.audio.tunnel.encode=false \
 vendor.audio.use.sw.alac.decoder=true \
@@ -44,14 +51,20 @@ ro.qualcomm.bt.hci_transport=smd
 PRODUCT_PROPERTY_OVERRIDES += \
 camera.display.lmax=1280x720 \
 camera.display.umax=1920x1080 \
-camera.hal1.packagelist=com.skype.raider,com.google.android.talk \
+vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp \
 camera.lowpower.record.enable=1 \
 media.camera.ts.monotonic=1 \
+persist.camera.CDS=false \
+persist.camera.dual.camera=0 \
+persist.camera.eis.enable=1 \
 persist.camera.gyro.disable=0 \
 persist.camera.isp.clock.optmz=0 \
 persist.camera.stats.test=5 \
 persist.vendor.qti.telephony.vt_cam_interface=1 \
-vidc.enc.dcvs.extra-buff-count=2
+persist.camera.video.CDS=false \
+vidc.enc.dcvs.extra-buff-count=2 \
+persist.camera.HAL3.enabled=1 \
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
 
 # Cne/Dpm
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,14 +85,14 @@ debug.sf.enable_hwc_vds=1 \
 debug.sf.hw=0 \
 debug.sf.latch_unsignaled=1 \
 debug.sf.recomputecrop=0 \
+debug.sf.enable_gl_backpressure=1 \
 dev.pm.dyn_samplingrate=1 \
-persist.debug.wfd.enable=1 \
 persist.demo.hdmirotationlock=false \
 persist.hwc.enable_vds=1 \
 persist.hwc.mdpcomp.enable=true \
 ro.opengles.version=196610 \
 ro.qualcomm.cabl=0 \
-ro.sf.lcd_density=480 \
+ro.sf.lcd_density=320 \
 ro.vendor.display.cabl=2 \
 sdm.debug.disable_skip_validate=1 \
 vendor.display.disable_skip_validate=1 \
@@ -93,6 +106,20 @@ drm.service.enabled=true
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.qfp=false
+
+# HWUI properties
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.hwui.texture_cache_size=72 \
+ro.hwui.layer_cache_size=48 \
+ro.hwui.r_buffer_cache_size=8 \
+ro.hwui.path_cache_size=32 \
+ro.hwui.gradient_cache_size=1 \
+ro.hwui.drop_shadow_cache_size=6 \
+ro.hwui.texture_cache_flushrate=0.4 \
+ro.hwui.text_small_cache_width=1024 \
+ro.hwui.text_small_cache_height=1024 \
+ro.hwui.text_large_cache_width=2048 \
+ro.hwui.text_large_cache_height=1024
 
 # Fm
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -168,7 +195,18 @@ rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
 ro.telephony.call_ring.multiple=false \
 ro.telephony.default_network=22,20 \
 service.qti.ims.enabled=1
+persist.sys.fflag.override.settings_network_and_internet_v2=true
 
+# SurfaceFlinger
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+ro.surface_flinger.protected_contents=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+debug.sf.early_phase_offset_ns=1500000 \
+debug.sf.early_app_phase_offset_ns=1500000 \
+debug.sf.early_gl_phase_offset_ns=3000000 \
+debug.sf.early_gl_app_phase_offset_ns=15000000
+    
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.timed.enable=true
@@ -183,8 +221,13 @@ sys.use_fifo_ui=1
 
 # Usb
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.usb.config.extra=none
+persist.sys.usb.config.extra=none
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
 wifi.interface=wlan0
+
+# WiFi Display
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.debug.wfd.enable=1 \
+persist.sys.wfd.virtual=0

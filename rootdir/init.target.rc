@@ -127,16 +127,16 @@ service wcnss-service /system/vendor/bin/wcnss_service
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
-    user system
+    user radio
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
-    user system
+    user radio
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
+    group radio wifi inet log diag
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -151,30 +151,21 @@ service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
 
 service vendor.imsrcsservice /system/vendor/bin/imsrcsd
    class main
-   user system
+   user radio
    group radio diag inet log wakelock
    writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
    restart vendor.ims_rtp_daemon
 
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
+on property:init.svc.vendor.hwcomposer-2-1=stopped
+    stop vendor.ppd
 
-on property:init.svc.surfaceflinger=running
-    start ppd
+on property:init.svc.vendor.hwcomposer-2-1=running
+    start vendor.ppd
 
-on property:init.svc.surfaceflinger=restarting
-    stop ppd
-
-on property:init.svc.zygote=stopped
-    stop ppd
-
-on property:init.svc.zygote=running
-    start ppd
-
-on property:init.svc.zygote=restarting
-    stop ppd
+on property:init.svc.vendor.hwcomposer-2-1=restarting
+    stop vendor.ppd
 
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
@@ -195,6 +186,13 @@ on charger
     start thermal-engine
 
 on boot
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/top-app/boost/cpus 4-7
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
+
     # add a cpuset for the camera daemon
     # we want all cores for camera
     mkdir /dev/cpuset/camera-daemon
@@ -208,16 +206,7 @@ on boot
 # access permission for wlan
     chown system system /mnt/vendor/persist/WCNSS_qcom_wlan_nv.bin
 
-#USB controller configuration
-    write /sys/module/g_android/parameters/mtp_tx_req_len 131072
-    write /sys/module/g_android/parameters/mtp_rx_req_len 131072
-    write /sys/class/android_usb/android0/f_rndis_qc/rndis_transports BAM2BAM_IPA
-    setprop vendor.usb.rndis.func.name "rndis_bam"
-    setprop vendor.usb.rmnet.func.name "rmnet_bam"
-    setprop vendor.usb.rmnet.inst.name "rmnet"
-    setprop vendor.usb.dpl.inst.name "dpl"
-
-service ppd /vendor/bin/mm-pp-dpps
+service vendor.ppd /vendor/bin/mm-pp-dpps
     class late_start
     user system
     group system graphics
