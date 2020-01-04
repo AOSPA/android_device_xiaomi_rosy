@@ -1,4 +1,5 @@
 Copyright (C) 2017 - The LineageOS Project
 
-Common device tree for Xiaomi MSM8953 based devices
+Android 10 device tree for Xiaomi Redmi 5 (rosy)
+(Rebased msm8953-common)
 ==============
