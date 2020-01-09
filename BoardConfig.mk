@@ -226,6 +226,10 @@ VENDOR_SECURITY_PATCH := 2019-05-01
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/minimal
 BOARD_SEPOLICY_VERS := 28.0
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /vendor/lib/hw/camera.msm8953.so|libshims_camera.so
+
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
