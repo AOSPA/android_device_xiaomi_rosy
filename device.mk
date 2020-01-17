@@ -17,9 +17,10 @@
 # Inherit proprietary vendor files
 $(call inherit-product, vendor/xiaomi/rosy/rosy-vendor.mk)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-pa
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
