@@ -1,2 +1,2 @@
-type lirc_device, dev_type;
+#============= device ==============
 type gx_fpd_device, dev_type;

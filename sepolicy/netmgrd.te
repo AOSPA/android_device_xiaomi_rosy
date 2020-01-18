@@ -1,1 +1,2 @@
+#============= netmgrd ==============
 set_prop(netmgrd, vendor_xlat_prop)
