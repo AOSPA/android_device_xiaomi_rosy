@@ -411,12 +411,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-impl \
     android.hardware.thermal@2.0-service
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.debuggable=1
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
