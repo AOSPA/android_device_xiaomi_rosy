@@ -208,6 +208,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
 
+#HALS
+PRODUCT_SOONG_NAMESPACES += \
+hardware/qcom/audio \
+hardware/qcom/media \
+hardware/qcom/display
+
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
