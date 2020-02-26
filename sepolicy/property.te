@@ -1,0 +1,11 @@
+# Camera
+type vendor_camera_prop, property_type;
+
+# Fingerprint
+type hal_fingerprint_prop, property_type;
+
+# Thermal engine
+type thermal_prop, property_type;
+
+# WiFi
+type hal_wifi_prop, property_type;

@@ -1,11 +1,14 @@
 #============= init ==============
-allow init hal_power_stats_hwservice:hwservice_manager add;
 allow init hidl_base_hwservice:hwservice_manager add;
 allow init hwservicemanager:binder { call transfer };
 allow init proc_boot_reason:file r_file_perms;
 allow init sysfs:file setattr;
+allow init sysfs_sensors:file setattr;
 allow init system_server:binder { call transfer };
-allow init vendor_file:file { execute execute_no_trans };
+allow init vendor_file:file { execute };
+allow init proc:file setattr;
+allow init same_process_hal_file:file execute;
+allow init sysfs_leds:lnk_file read;
 
 # Allow init to bind mount loader config for media swcodec
 allow init system_file:file mounton;

@@ -1,0 +1,2 @@
+#============= hal_rcsservice ==============
+allow hal_rcsservice sysfs:file read;

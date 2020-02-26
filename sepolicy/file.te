@@ -19,6 +19,11 @@ type keylayout_file, file_type, vendor_file_type;
 # IR
 type spidev_file, file_type;
 
+# MSM Irqbalance
+type proc_irq, fs_type, proc_type;
+type sysfs_irq, sysfs_type, fs_type;
+type irqbalance_socket, file_type;
+
 # Rild
 type rild_file, file_type, vendor_file_type;
 

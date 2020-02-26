@@ -1,0 +1,2 @@
+#============= vold ==============
+allow vold same_process_hal_file:file { open execute getattr read };

@@ -1,2 +1,0 @@
-#============= netutils_wrapper ==============
-allow netutils_wrapper vendor_file:file { read getattr };
