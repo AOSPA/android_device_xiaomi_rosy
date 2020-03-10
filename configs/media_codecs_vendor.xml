@@ -128,9 +128,6 @@ Only the three quirks included above are recognized at this point:
     <Settings>
         <Setting name="max-video-encoder-input-buffers" value="11" />
     </Settings>
-    <Settings>
-        <Variant name="slow-cpu" enabled="true" />
-    </Settings>
     <Encoders>
         <!-- Video Hardware  -->
         <MediaCodec name="OMX.qcom.video.encoder.hevc" type="video/hevc" >
@@ -197,6 +194,7 @@ Only the three quirks included above are recognized at this point:
             <Feature name="intra-refresh" />
             <Limit name="performance-point-1920x1088" value="30" />
         </MediaCodec>
+        <MediaCodec name="c2.android.hevc.encoder" type="video/hevc" update="true" enabled="false" />
     </Encoders>
     <Decoders>
         <!-- Video Hardware  -->
@@ -372,30 +370,24 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
             <Limit name="performance-point-3840x2160" value="24" />
         </MediaCodec>
-        <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" >
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="64x64" max="3840x2160" />
+        <MediaCodec name="c2.android.hevc.decoder" type="video/hevc" update="true">
+            <!-- profiles and levels:  ProfileMain : MainTierLevel51 -->
+            <Limit name="size" min="2x2" max="2048x2048" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="8x8" />
+            <Limit name="block-count" range="1-65536" />
+            <Limit name="blocks-per-second" range="1-491520" />
+            <Limit name="bitrate" range="1-5000000" />
+       </MediaCodec>
+        <MediaCodec name="c2.android.avc.decoder" type="video/avc" update="true">
+            <!-- profiles and levels:  ProfileHigh : Level51 -->
+            <Limit name="size" min="2x2" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="blocks-per-second" min="1" max="972000" />
-            <Limit name="bitrate" range="1-100000000" />
+            <Limit name="block-count" range="1-16384" />
+            <Limit name="blocks-per-second" range="1-491520" />
+            <Limit name="bitrate" range="1-40000000" />
             <Feature name="adaptive-playback" />
-            <Limit name="concurrent-instances" max="16" />
-            <Limit name="performance-point-3840x2160" value="24" />
-        </MediaCodec>
-        <MediaCodec name="OMX.qcom.video.decoder.hevc.secure" type="video/hevc" >
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="64x64" max="1920x1088" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="blocks-per-second" min="1" max="244800" />
-            <Limit name="bitrate" range="1-20000000" />
-            <Feature name="adaptive-playback" />
-            <Feature name="secure-playback" required="true" />
-            <Limit name="concurrent-instances" max="2" />
-            <Limit name="performance-point-1920x1088" value="30" />
         </MediaCodec>
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
