@@ -204,18 +204,6 @@ ro.vendor.use_data_netmgrd=true \
 persist.data.netmgrd.qos.enable=true \
 persist.vendor.data.mode=concurrent
 
-# Nitz
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.rild.nitz_plmn="" \
-persist.rild.nitz_long_ons_0="" \
-persist.rild.nitz_long_ons_1="" \
-persist.rild.nitz_long_ons_2="" \
-persist.rild.nitz_long_ons_3="" \
-persist.rild.nitz_short_ons_0="" \
-persist.rild.nitz_short_ons_1="" \
-persist.rild.nitz_short_ons_2="" \
-persist.rild.nitz_short_ons_3=""
-
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
 DEVICE_PROVISIONED=1 \
@@ -229,6 +217,7 @@ persist.vendor.radio.multisim_switch_support=true \
 persist.radio.reboot_on_modem_change=true \
 persist.radio.multisim.config=dsds \
 persist.vendor.radio.custom_ecc=1 \
+persist.vendor.radio.procedure_bytes=SKIP \
 persist.vendor.radio.rat_on=combine \
 persist.vendor.radio.sib16_support=1 \
 ril.subscription.types=NV,RUIM \
@@ -236,7 +225,8 @@ rild.libargs=-d/dev/smd0 \
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
 ro.telephony.call_ring.multiple=false \
 ro.telephony.default_network=22,22 \
-service.qti.ims.enabled=1
+service.qti.ims.enabled=1 \
+ro.telephony.iwlan_operation_mode=legacy \
 persist.sys.fflag.override.settings_network_and_internet_v2=true
 
 # SurfaceFlinger
