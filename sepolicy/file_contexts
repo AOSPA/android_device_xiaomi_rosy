@@ -23,10 +23,6 @@
 /data/gf_data(/.*)?                             u:object_r:gx_fpd_data_file:s0
 /persist/data/gxfp(/.*)?			u:object_r:gx_fpd_data_file:s0
 
-# Input devices
-/(vendor|system/vendor)/usr/idc(/.*)?                         u:object_r:idc_file:s0
-/(vendor|system/vendor)/usr/keylayout(/.*)?                   u:object_r:keylayout_file:s0
-
 # IR
 /dev/spidev6\.1				u:object_r:spidev_file:s0
 /dev/spidev7\.1				u:object_r:spidev_file:s0
