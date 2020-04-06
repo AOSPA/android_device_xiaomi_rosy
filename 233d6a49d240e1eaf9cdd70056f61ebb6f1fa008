@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98f60587_0c2a5d91",
+        "filename": "sepolicy/qti_init_shell.te",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000237
+      },
+      "writtenOn": "2020-04-06T12:43:24Z",
+      "side": 1,
+      "message": "This will be a neverallow.\nCheck the offending context. Can\u0027t give qti_init_shell all of sysfs rw perms.",
+      "revId": "233d6a49d240e1eaf9cdd70056f61ebb6f1fa008",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": true
+    }
+  ]
+}
