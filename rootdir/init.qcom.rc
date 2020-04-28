@@ -270,6 +270,9 @@ on post-fs-data
     mkdir /data/vendor/ipa 0770 radio radio
     chmod 0770 /data/vendor/ipa
 
+    #Create IOP  deamon related dirs
+    mkdir /data/vendor/iop 0700 root system
+
     #Create QTI dir for logs
     mkdir /data/vendor/dataqti 0770 radio radio
     chmod 0770 /data/vendor/dataqti
@@ -427,6 +430,14 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
+
+service iop /system/vendor/bin/iop
+    class main
+    user root
+    group root
+    disabled
+    socket iop seqpacket 0666 root system
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
