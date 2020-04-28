@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The ParanoidAndroid
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -206,11 +206,6 @@ hardware/qcom/audio \
 hardware/qcom/media \
 hardware/qcom/display
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0
-
 # HW crypto
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
@@ -249,10 +244,6 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_rosy
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_PACKAGES += \
@@ -337,14 +328,9 @@ PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
 
-# QTI Performance
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.safailnet.rc \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
@@ -382,10 +368,6 @@ PRODUCT_PACKAGES += \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml
 
-# Seccomp policy
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
@@ -403,10 +385,6 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # USB HAL
 PRODUCT_PACKAGES += \

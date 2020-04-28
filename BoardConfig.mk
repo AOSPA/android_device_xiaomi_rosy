@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -192,11 +192,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Recovery
-ifeq ($(AB_OTA_UPDATER), true)
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab_AB.qcom
-else
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
-endif
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2019-05-01
