@@ -123,6 +123,7 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     libldacBT_dec \
+    libbtconfigstore \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service \
     liba2dpoffload
