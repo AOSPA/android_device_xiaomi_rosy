@@ -24,7 +24,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_PREF_CONFIG := 360dpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1440
@@ -167,6 +168,7 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libgenlock \
     libtinyxml
+    ro.sf.lcd_density=360
 
 # DRM
 PRODUCT_PACKAGES += \
