@@ -101,22 +101,20 @@ debug.sf.enable_hwc_vds=1 \
 debug.sf.hw=0 \
 debug.sf.latch_unsignaled=1 \
 debug.sf.recomputecrop=0 \
-debug.sf.enable_gl_backpressure=1 \
-debug.sdm.support_writeback=0 \
 dev.pm.dyn_samplingrate=1 \
 persist.demo.hdmirotationlock=false \
 persist.hwc.enable_vds=1 \
 persist.hwc.mdpcomp.enable=true \
 ro.opengles.version=196610 \
 ro.qualcomm.cabl=0 \
-ro.sf.lcd_density=320 \
 ro.vendor.display.cabl=2 \
 sdm.debug.disable_skip_validate=1 \
+vendor.display.perf_hint_window=50 \
+vendor.display.disable_rotator_split=1 \
 vendor.display.disable_skip_validate=1 \
 vendor.display.enable_default_color_mode=1 \
 vendor.gralloc.enable_fb_ubwc=1 \
 sys.display-size=1920x1080 \
-debug.sf.hwc.canUseABC=1 \
 debug.sf.disable_backpressure=1
 
 # DRM
@@ -188,11 +186,6 @@ vendor.vidc.enc.disable.pq=true \
 vendor.vidc.enc.disable_bframes=1 \
 vendor.video.disable.ubwc=1
 
-# Memory optimizations
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.vendor.qti.sys.fw.bservice_enable=true \
-ro.vendor.qti.am.reschedule_service=true
-
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.sys.fw.dex2oat_thread_count=8 \
@@ -245,9 +238,10 @@ debug.sf.early_app_phase_offset_ns=1500000 \
 debug.sf.early_gl_phase_offset_ns=3000000 \
 debug.sf.early_gl_app_phase_offset_ns=15000000
 
-# ParanoidDoze
-ro.sensor.proximity=true
-ro.sensor.pocket=xiaomi.sensor.pocket
+# Paranoid Doze
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.sensor.proximity=true \
+ro.sensor.pocket=xiaomi.sensor.pocket \
 ro.sensor.pickup=xiaomi.sensor.pickup
 
 # Time Services
