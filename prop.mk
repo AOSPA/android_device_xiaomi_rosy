@@ -82,6 +82,15 @@ persist.dpm.feature=1
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.debug.coresight.config=stm-events
 
+# Dalvik heap
+PRODUCT_PROPERTY_OVERRIDES += \
+dalvik.vm.heapstartsize=8m \
+dalvik.vm.heapgrowthlimit=192m \
+dalvik.vm.heapsize=512m \
+dalvik.vm.heaptargetutilization=0.75 \
+dalvik.vm.heapminfree=512k \
+dalvik.vm.heapmaxfree=8m
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
 debug.egl.hw=0 \
@@ -148,20 +157,6 @@ ro.gps.agps_provider=1
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.location.osnlp.package=com.google.android.gms \
 ro.location.osnlp.region.package=""
-
-# Set lmkd options
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.lmk.low=1001 \
-ro.lmk.medium=0 \
-ro.lmk.critical=800 \
-ro.lmk.critical_upgrade=false \
-ro.lmk.upgrade_pressure=100 \
-ro.lmk.downgrade_pressure=100 \
-ro.lmk.kill_heaviest_task=true \
-ro.lmk.kill_timeout_ms=15 \
-ro.lmk.use_minfree_levels=true \
-ro.lmk.enhance_batch_kill=true \
-ro.lmk.vmpressure_file_min=80640
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
