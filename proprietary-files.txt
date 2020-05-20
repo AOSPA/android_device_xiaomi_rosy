@@ -1727,3 +1727,15 @@ vendor/lib64/com.fingerprints.extension@1.0.so|18e9df662cb50d4ca7760bbcbc27fc4f3
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so|77e56b6a4b28eea5321ac30d1f685a130684d469
 #lib/android.hardware.biometrics.fingerprint@2.1.so:vendor/lib/android.hardware.biometrics.fingerprint@2.1.so
 #lib64/android.hardware.biometrics.fingerprint@2.1.so:vendor/lib64/android.hardware.biometrics.fingerprint@2.1.so
+
+# Thermal - from rosy:8.1.0/OPM1.171019.026/9.4.25
+vendor/bin/hw/android.hardware.thermal@1.0-service
+vendor/bin/thermal-engine
+vendor/etc/init/android.hardware.thermal@1.0-service.rc
+vendor/lib/hw/android.hardware.thermal@1.0-impl.so
+vendor/lib/hw/thermal.msm8953.so
+-vendor/lib/libthermalclient.so
+vendor/lib64/hw/android.hardware.thermal@1.0-impl.so
+vendor/lib64/hw/thermal.msm8953.so
+-vendor/lib64/libthermalclient.so
+vendor/lib64/libthermalfeature.so
