@@ -202,7 +202,8 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /vendor/lib/hw/camera.msm8953.so|libshims_camera.so
+    /vendor/lib/hw/camera.msm8953.so|libshims_camera.so \
+    /vendor/lib/libmmcamera_ppeiscore.so|libshim_mmcamera_ppeiscore.so
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
