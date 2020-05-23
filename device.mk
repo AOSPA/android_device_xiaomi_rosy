@@ -135,7 +135,8 @@ PRODUCT_PACKAGES += \
     camera.msm8953 \
     libmm-qcamera \
     Snap \
-    libshims_camera
+    libshims_camera \
+    libshim_mmcamera_ppeiscore
 
 # ConsumerIr
 PRODUCT_PACKAGES += \
