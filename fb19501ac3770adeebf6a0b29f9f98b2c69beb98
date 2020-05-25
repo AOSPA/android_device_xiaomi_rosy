@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecf0856c_7db77d23",
+        "filename": "AndroidBoard.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2020-05-25T14:54:38Z",
+      "side": 1,
+      "message": "Why call these manually if you can do it automatically above? Use the radio folder for all firmware and the filesmap will handle it",
+      "revId": "fb19501ac3770adeebf6a0b29f9f98b2c69beb98",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": true
+    }
+  ]
+}
