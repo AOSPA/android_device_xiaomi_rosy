@@ -115,7 +115,8 @@ vendor.display.disable_skip_validate=1 \
 vendor.display.enable_default_color_mode=1 \
 vendor.gralloc.enable_fb_ubwc=1 \
 sys.display-size=1920x1080 \
-debug.sf.disable_backpressure=1
+debug.sf.disable_backpressure=1 \
+persist.sys.sf.color_saturation=1.1
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
