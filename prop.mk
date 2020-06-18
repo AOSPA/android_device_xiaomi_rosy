@@ -10,10 +10,11 @@ dalvik.vm.image-dex2oat-filter=speed
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 bluetooth.hfp.client=1 \
-qcom.bluetooth.soc=smd \
-ro.bluetooth.hfp.ver=1.7 \
-ro.qualcomm.bt.hci_transport=smd \
-persist.bluetooth.bluetooth_audio_hal.disabled=true
+persist.vendor.bt.enable.splita2dp=false \
+persist.vendor.qcom.bluetooth.enable.splita2dp=false \
+ro.bluetooth.library_name=libbluetooth_qti.so \
+ro.vendor.bluetooth.wipower=false \
+vendor.qcom.bluetooth.soc=pronto
 
 # Boot
 PRODUCT_PROPERTY_OVERRIDES += \
