@@ -105,7 +105,7 @@
 
     <backend_names>
         <device name="SND_DEVICE_OUT_HEADPHONES" interface="PRI_MI2S_RX"/>
-		<device name="SND_DEVICE_OUT_HEADPHONES_HIFI_FILTER" backend="headphones" interface="INT0_MI2S_RX"/>
+	<device name="SND_DEVICE_OUT_HEADPHONES_HIFI_FILTER" backend="headphones" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO_WB" interface="INT_BT_SCO_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO" interface="INT_BT_SCO_RX"/>
         <device name="SND_DEVICE_OUT_LINE" interface="PRI_MI2S_RX"/>
