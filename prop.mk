@@ -7,43 +7,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 dalvik.vm.dex2oat-filter=speed \
 dalvik.vm.image-dex2oat-filter=speed
 
-# Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-af.fast_track_multiplier=1 \
-audio.deep_buffer.media=true \
-audio.offload.disable=true \
-audio.offload.min.duration.secs=30 \
-audio.offload.video=true \
-persist.vendor.audio.fluence.speaker=false \
-persist.vendor.audio.fluence.voicecall=true \
-persist.vendor.audio.fluence.voicerec=false \
-persist.vendor.btstack.enable.splita2dp=false \
-ro.config.media_vol_steps=25 \
-ro.config.vc_call_vol_steps=15 \
-ro.vendor.audio.sdk.fluencetype=fluence \
-ro.vendor.audio.sdk.ssr=false \
-vendor.audio.flac.sw.decoder.24bit=true \
-vendor.audio.offload.buffer.size.kb=64 \
-vendor.audio.offload.gapless.enabled=true \
-vendor.audio.offload.multiaac.enable=true \
-vendor.audio.offload.multiple.enabled=false \
-vendor.audio.offload.passthrough=false \
-vendor.audio.offload.track.enable=true \
-vendor.audio.parser.ip.buffer.size=262144 \
-vendor.audio.playback.mch.downsample=true \
-vendor.audio.pp.asphere.enabled=false \
-vendor.audio.read.wsatz.type=true \
-vendor.audio.safx.pbe.enabled=true \
-vendor.audio.tunnel.encode=false \
-vendor.audio.use.sw.alac.decoder=true \
-vendor.audio.use.sw.ape.decoder=true \
-vendor.audio_hal.period_size=192 \
-vendor.voice.conc.fallbackpath=deep-buffer \
-vendor.voice.path.for.pcm.voip=true \
-vendor.voice.playback.conc.disabled=true \
-vendor.voice.record.conc.disabled=false \
-vendor.voice.voip.conc.disabled=true
-
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 bluetooth.hfp.client=1 \
