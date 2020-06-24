@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c14a3fb_590bbada",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000468
+      },
+      "writtenOn": "2020-06-24T06:18:35Z",
+      "side": 1,
+      "message": "copy to vendor/etc/audio",
+      "revId": "d51289cf943212ec2aebc2e0d2b3c0207cd14c98",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": false
+    }
+  ]
+}
