@@ -22,7 +22,7 @@ lib/libmorpho_memory_allocator.so:vendor/lib/libmorpho_memory_allocator.so|69484
 lib/libmorpho_panorama.so:vendor/lib/libmorpho_panorama.so|c1a877ecc4fbc97e6c5b42f648687e27803e8112
 lib/libmorpho_panorama_gp.so:vendor/lib/libmorpho_panorama_gp.so|aa131ed9a7cd2caf5b1cb72900ca9b2126f7df46
 lib/libtrueportrait.so:vendor/lib/libtrueportrait.so|b8e11c098bd859aae6c535cdb87e3e36f6b1c6ef
-vendor/bin/mm-qcamera-daemon|466d54f7109a7013669cd300675af153c06a1bb6
+vendor/bin/mm-qcamera-daemon|a9d7d7c6c057d7a7037f61eca26ff8ee57a1e23c
 vendor/lib/hw/camera.msm8953.so|3deaf69bcce8002c8d534967c66f6cc933b191e8
 vendor/lib/libFaceGrade.so|df96576421e9a9c23223a45425799b3ef074218e
 vendor/lib/lib_lowlight.so|1809cbb2b2223ea9616e806aa5f38e87b3bc8d00
@@ -43,7 +43,7 @@ vendor/lib/libmmcamera2_c2d_module.so|547c219c358c86c6dcad98d9aeeed6e226c776b1
 vendor/lib/libmmcamera2_cpp_module.so|3c1d395333014154e2d79f9ff184bdcb6ab02fdb
 vendor/lib/libmmcamera2_dcrf.so|46813e433f862addc3b0ea3a576d09462d62e808
 vendor/lib/libmmcamera2_frame_algorithm.so|7792780ef2cb5cabf66474a5ea0bc0d79a294371
-vendor/lib/libmmcamera2_iface_modules.so|6861a06550e800c3ee519cf448507c2d554ad736
+vendor/lib/libmmcamera2_iface_modules.so|c28b187128bf96f4cdc3e061d726ff90c0c1264d
 vendor/lib/libmmcamera2_imglib_modules.so|ec1dba3764a76a611cab6c8bff5f2366c8e35715
 vendor/lib/libmmcamera2_is.so|04cf15edd45eff162820bda4b96718aaf34bd39b
 vendor/lib/libmmcamera2_isp_modules.so|6807706c78005762292a2a27e64bf1df6e12b80d
@@ -60,7 +60,7 @@ vendor/lib/libmmcamera_chromaflash_lib.so|19ecfd2ba44d5ae276061a6121d0c900b352f9
 vendor/lib/libmmcamera_csidtg.so|bcc0c689fcbb7b29549732704e5a40d88c9d1212
 vendor/lib/libmmcamera_dbg.so|2a32b56f5b59de0fa76bcd6d9f879fd0c9410da7
 vendor/lib/libmmcamera_dcrf_lib.so|2dcba57bb5634a9cdf8189720002219d52a2a4b5
-vendor/lib/libmmcamera_dummyalgo.so|5c16873d42edc67346e382cd3a6b95f1f27004d4-
+vendor/lib/libmmcamera_dummyalgo.so|5c16873d42edc67346e382cd3a6b95f1f27004d4
 vendor/lib/libmmcamera_eebinparse.so|0173139d866bf0c102878c98fc3305118d4c43b3
 vendor/lib/libmmcamera_eeprom_util.so|e5ed7a8f2855f61f2e9a17458e3c68f32a404c5a
 vendor/lib/libmmcamera_eztune_module.so|f12315786cc5d064a512f657c00fa5439831384f
@@ -1672,12 +1672,25 @@ vendor/lib/libmmcamera_isp_sub_module.so|e4a1c87855d533c6142e61a31ec005a0e02c95b
 vendor/lib/libmmcamera_isp_template.so|fe46cb1b3be61b264227ff17df1773f01ad8e5f9
 vendor/lib/libmmcamera_isp_wb40.so|01777e6a1998e1bec1ed3260e4536298db38def5
 
+# Camera firmware - from rosy:8.1.0/OPM1.171019.026/9.4.25
+vendor/firmware/cpp_firmware_v1_8_0.fw|26e2badbb4e3049243f0a176722f26879e7b87e8
+vendor/firmware/cpp_firmware_v1_5_0.fw|ac19cd179b7b118bb3ea01a35fdfc78dc58164a1
+vendor/firmware/cpp_firmware_v1_6_0.fw|dcd3d1f904c7ee3d731f8f28b5f78f2503916ada
+vendor/firmware/cpp_firmware_v1_2_0.fw|5ff0d66bcdbb29f4e924d011ae825583e48b3962
+vendor/firmware/cpp_firmware_v1_4_0.fw|11eba982212797920102912142940a9e08931c52
+vendor/firmware/cpp_firmware_v1_1_1.fw|04b8eb253d630eaeadab296e1607dc6a29d93d3c
+vendor/firmware/cpp_firmware_v1_5_1.fw|f3f622ab29a560b170d0f2c6ddec14b933f2d476
+vendor/firmware/cpp_firmware_v1_12_0.fw|de18ccdf371824059acfdf3c7754c6e1bc1c2f8c
+vendor/firmware/cpp_firmware_v1_10_0.fw|cf9458601aa4bbe9c57acfc1c7d0f158386ace9f
+vendor/firmware/cpp_firmware_v1_5_2.fw|58dd7f7c09dbb62bc6f334a8885064b292610675
+vendor/firmware/cpp_firmware_v1_1_6.fw|6b2c9fe0a43a9ce86a921e18faffe4d0a35746ee
+
 # Consumer IR - from rosy:8.1.0/OPM1.171019.026/9.4.25
 lib/hw/consumerir.default.so:vendor/lib/hw/consumerir.default.so|b836d25b42b12e88ab0ff4e47c08321a6ddc5285
 lib64/hw/consumerir.default.so:vendor/lib64/hw/consumerir.default.so|c7f8fb64d8bda3b16f81700b6d0549e5e2d99531
 
 # Display calibration - from rosy:8.1.0/OPM1.171019.026/9.4.25
-vendor/etc/qdcm_calib_data_ft8006m_boe_5p7_720p_video.xml|beb50377ce04f8903527945228ac83c5739bc61a
+vendor/etc/qdcm_calib_data_ft8006m_boe_5p7_720p_video.xml|9824a2c3c382d6429cb2f35f1cc30770815cf7e3
 vendor/etc/qdcm_calib_data_ft8613_csot_5p7_720p_video.xml|cc56ac37178aa9081141fbe6702825901f363ee0
 vendor/etc/qdcm_calib_data_ft8613_ebbg_5p7_720p_video.xml|5d2e49b80dffa42e281b930bd040c029ecceaec9
 
@@ -1728,14 +1741,23 @@ vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so|77e56b6a4b28eea5321ac30d1f68
 #lib/android.hardware.biometrics.fingerprint@2.1.so:vendor/lib/android.hardware.biometrics.fingerprint@2.1.so
 #lib64/android.hardware.biometrics.fingerprint@2.1.so:vendor/lib64/android.hardware.biometrics.fingerprint@2.1.so
 
+# Graphics firmware - from rosy:8.1.0/OPM1.171019.026/9.4.25
+vendor/firmware/a506_zap.b00|c45a7b34456844f5deb73e2dce79cbfcfb9ae71c
+vendor/firmware/a506_zap.b01|094fb7711df58a440d98dc017af7198c3c54714e
+vendor/firmware/a506_zap.b02|b79957c47f0a6757ac1d721dbe06551508454634
+vendor/firmware/a506_zap.mdt|648b8438080e991280dda7d28ac8b76c107c9e51
+vendor/firmware/a530_pfp.fw|448f9db8271fefb08348cbc50409e8e95bd93f78
+vendor/firmware/a530_pm4.fw|5741a28752355b478d455635bab008028ff7e1c6
+
 # Thermal - from rosy:8.1.0/OPM1.171019.026/9.4.25
-vendor/bin/hw/android.hardware.thermal@1.0-service
-vendor/bin/thermal-engine
-vendor/etc/init/android.hardware.thermal@1.0-service.rc
-vendor/lib/hw/android.hardware.thermal@1.0-impl.so
-vendor/lib/hw/thermal.msm8953.so
--vendor/lib/libthermalclient.so
-vendor/lib64/hw/android.hardware.thermal@1.0-impl.so
-vendor/lib64/hw/thermal.msm8953.so
--vendor/lib64/libthermalclient.so
-vendor/lib64/libthermalfeature.so
+vendor/bin/hw/android.hardware.thermal@1.0-service|f3018b5c37cd4416d80e417831b821e89099b7bf
+vendor/bin/thermal-engine|f15324e01055e4a18c18f3bdc9605c232e572e13
+vendor/etc/init/android.hardware.thermal@1.0-service.rc|41c3b2e32b72aac885706e1ee2bc10641e115f36
+vendor/lib/hw/android.hardware.thermal@1.0-impl.so|70c9dac39c9df339be872e0bde8a74b23f021450
+vendor/lib/hw/thermal.msm8953.so|af032f19a32d87eb2f759b7ed89c80388d6aeab7
+-vendor/lib/libthermalclient.so|5e77723f69df323a85360c39722b8da00297ba9a
+vendor/lib64/hw/android.hardware.thermal@1.0-impl.so|5a1500f5d5b06b2ca135eab993f1b5d5f4a868d3
+vendor/lib64/hw/thermal.msm8953.so|a64ab36845df3d17de1d5378b547b77c9d759485
+-vendor/lib64/libthermalclient.so|5b5dcfc714a31a65e1757ef786e697b1a69e012e
+vendor/lib64/libthermalfeature.so|655a4b39b45a80069d7d8706a921ee0ace3a4865
+vendor/lib64/libthermalioctl.so|615222fcccc1d481408f408ca3840274fe8fd097
