@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "164982d6_06d15081",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2020-06-27T15:38:28Z",
+      "side": 1,
+      "message": "Is this not in the soc mk?",
+      "revId": "c51e753d4d0f865379b0ab235c17d2e30c679e64",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": true
+    }
+  ]
+}
