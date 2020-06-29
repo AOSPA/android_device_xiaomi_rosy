@@ -1690,7 +1690,7 @@ lib/hw/consumerir.default.so:vendor/lib/hw/consumerir.default.so|b836d25b42b12e8
 lib64/hw/consumerir.default.so:vendor/lib64/hw/consumerir.default.so|c7f8fb64d8bda3b16f81700b6d0549e5e2d99531
 
 # Display calibration - from rosy:8.1.0/OPM1.171019.026/9.4.25
-vendor/etc/qdcm_calib_data_ft8006m_boe_5p7_720p_video.xml|9824a2c3c382d6429cb2f35f1cc30770815cf7e3
+vendor/etc/qdcm_calib_data_ft8006m_boe_5p7_720p_video.xml|beb50377ce04f8903527945228ac83c5739bc61a
 vendor/etc/qdcm_calib_data_ft8613_csot_5p7_720p_video.xml|cc56ac37178aa9081141fbe6702825901f363ee0
 vendor/etc/qdcm_calib_data_ft8613_ebbg_5p7_720p_video.xml|5d2e49b80dffa42e281b930bd040c029ecceaec9
 
@@ -1749,15 +1749,15 @@ vendor/firmware/a506_zap.mdt|648b8438080e991280dda7d28ac8b76c107c9e51
 vendor/firmware/a530_pfp.fw|448f9db8271fefb08348cbc50409e8e95bd93f78
 vendor/firmware/a530_pm4.fw|5741a28752355b478d455635bab008028ff7e1c6
 
-# Thermal - from rosy:8.1.0/OPM1.171019.026/9.4.25
-vendor/bin/hw/android.hardware.thermal@1.0-service|f3018b5c37cd4416d80e417831b821e89099b7bf
-vendor/bin/thermal-engine|f15324e01055e4a18c18f3bdc9605c232e572e13
-vendor/etc/init/android.hardware.thermal@1.0-service.rc|41c3b2e32b72aac885706e1ee2bc10641e115f36
-vendor/lib/hw/android.hardware.thermal@1.0-impl.so|70c9dac39c9df339be872e0bde8a74b23f021450
-vendor/lib/hw/thermal.msm8953.so|af032f19a32d87eb2f759b7ed89c80388d6aeab7
--vendor/lib/libthermalclient.so|5e77723f69df323a85360c39722b8da00297ba9a
-vendor/lib64/hw/android.hardware.thermal@1.0-impl.so|5a1500f5d5b06b2ca135eab993f1b5d5f4a868d3
-vendor/lib64/hw/thermal.msm8953.so|a64ab36845df3d17de1d5378b547b77c9d759485
--vendor/lib64/libthermalclient.so|5b5dcfc714a31a65e1757ef786e697b1a69e012e
-vendor/lib64/libthermalfeature.so|655a4b39b45a80069d7d8706a921ee0ace3a4865
-vendor/lib64/libthermalioctl.so|615222fcccc1d481408f408ca3840274fe8fd097
+# Thermal - from Daisy (QKQ1.191002.002)
+vendor/bin/hw/android.hardware.thermal@1.0-service|54200e0477daddea2f2d095c51a01976c73888af
+vendor/bin/thermal-engine|4ab3c410fbcf9f8cae711ea4ba16cd2797712de6
+vendor/etc/init/android.hardware.thermal@1.0-service.rc|83a76be56b9b0843ff3f2c06186c63156a459acb
+vendor/lib/hw/android.hardware.thermal@1.0-impl.so|729df603503bc9e94cb208d266b36655678d8e38
+vendor/lib/hw/thermal.msm8953.so|84b9a3744daca1fff62fe0e90fdc58c773a3009e
+-vendor/lib/libthermalclient.so|6077e27e15d9e3e43fa57d6d5405c49284f48949
+vendor/lib64/hw/android.hardware.thermal@1.0-impl.so|ddc530f8449450872c184912e9207be89bcfeac7
+vendor/lib64/hw/thermal.msm8953.so|5aba51d60cf944fc1b5dfbbffb2a6612548fd0ff
+-vendor/lib64/libthermalclient.so|12b26d4242b1a8913ddcb511f42a1debb83689af
+vendor/lib64/libthermalfeature.so|829b2fc0aa8c863d4b4b331e0a2c00663e01efe6
+vendor/lib64/libthermalioctl.so|24b22582f3f77769c5fbca06fcc1d3b6533cdf40
