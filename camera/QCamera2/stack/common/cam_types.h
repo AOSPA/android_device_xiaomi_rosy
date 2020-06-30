@@ -107,7 +107,7 @@
 #define EXIF_IMAGE_DESCRIPTION_SIZE 100
 
 #define MAX_INFLIGHT_REQUESTS  6
-#define MAX_INFLIGHT_BLOB      3
+#define MAX_INFLIGHT_BLOB      6
 #define MIN_INFLIGHT_REQUESTS  3
 #define MIN_INFLIGHT_60FPS_REQUESTS (6)
 #define MAX_INFLIGHT_REPROCESS_REQUESTS 1
@@ -155,13 +155,14 @@ typedef enum {
     CAM_HAL_V3 = 3
 } cam_hal_version_t;
 
-typedef enum {
-    CAM_STATUS_SUCCESS,       /* Operation Succeded */
-    CAM_STATUS_FAILED,        /* Failure in doing operation */
-    CAM_STATUS_INVALID_PARM,  /* Inavlid parameter provided */
-    CAM_STATUS_NOT_SUPPORTED, /* Parameter/operation not supported */
-    CAM_STATUS_ACCEPTED,      /* Parameter accepted */
-    CAM_STATUS_MAX,
+ typedef enum {
+    CAM_STATUS_INVALID_PARM  = -4, /* Inavlid parameter provided */
+    CAM_STATUS_NOT_SUPPORTED = -3, /* Parameter/operation not supported */
+    CAM_STATUS_BUSY          = -2, /* operation busy */
+    CAM_STATUS_FAILED        = -1, /* Failure in doing operation */
+    CAM_STATUS_SUCCESS       =  0, /* Operation Succeded */
+    CAM_STATUS_ACCEPTED      =  1, /* Parameter accepted */
+    CAM_STATUS_MAX           =  2,
 } cam_status_t;
 
 typedef enum {
@@ -288,6 +289,9 @@ typedef enum {
     CAM_FORMAT_JPEG_RAW_8BIT,
     CAM_FORMAT_META_RAW_8BIT,
 
+    /* generic 10-bit raw */
+    CAM_FORMAT_META_RAW_10BIT,
+
     /* QCOM RAW formats where data is packed into 64bit word.
      * 14BPP: 1 64-bit word contains 4 pixels p0 - p3, where most
      *       significant 4 bits are set to 0. P0 is stored at LSB.
@@ -367,6 +371,12 @@ typedef enum {
 } cam_format_t;
 
 typedef enum {
+    CAM_FORMAT_SUBTYPE_HDR_STATS,
+    CAM_FORMAT_SUBTYPE_PDAF_STATS,
+    CAM_FORMAT_SUBTYPE_MAX
+} cam_sub_format_type_t;
+
+typedef enum {
     CAM_STREAM_TYPE_DEFAULT,       /* default stream type */
     CAM_STREAM_TYPE_PREVIEW,       /* preview */
     CAM_STREAM_TYPE_POSTVIEW,      /* postview */
@@ -433,6 +443,7 @@ typedef struct {
     uint32_t cookie;      /* could be job_id(uint32_t) to identify mapping job */
     int32_t fd;           /* origin fd */
     size_t size;          /* size of the buffer */
+    void *buffer;         /* Buffer pointer */
 } cam_buf_map_type;
 
 typedef struct {
@@ -472,6 +483,7 @@ typedef struct {
         cam_buf_unmap_type_list buf_unmap_list;
     } payload;
 } cam_sock_packet_t;
+typedef cam_sock_packet_t cam_reg_buf_t;
 
 typedef enum {
     CAM_MODE_2D = (1<<0),
@@ -870,6 +882,13 @@ typedef enum {
     CAM_SENSOR_HDR_MAX,
 } cam_sensor_hdr_type_t;
 
+typedef enum {
+    CAM_LED_CALIBRATION_MODE_OFF,
+    CAM_LED_CALIBRATION_MODE_DUAL,
+    CAM_LED_CALIBRATION_MODE_SINGLE,
+    CAM_LED_CALIBRATION_MODE_MAX
+} cam_led_calibration_mode_t;
+
 typedef struct  {
     int32_t left;
     int32_t top;
@@ -1255,12 +1274,24 @@ typedef struct {
 } cam_faces_data_t;
 
 #define CAM_HISTOGRAM_STATS_SIZE 256
+
+typedef enum {
+  CAM_STATS_CHANNEL_Y,
+  CAM_STATS_CHANNEL_GR,
+  CAM_STATS_CHANNEL_GB,
+  CAM_STATS_CHANNEL_R,
+  CAM_STATS_CHANNEL_B,
+  CAM_STATS_CHANNEL_ALL,
+  CAM_STATS_CHANNEL_MAX
+} cam_histogram_data_type;
+
 typedef struct {
     uint32_t max_hist_value;
     uint32_t hist_buf[CAM_HISTOGRAM_STATS_SIZE]; /* buf holding histogram stats data */
 } cam_histogram_data_t;
 
 typedef struct {
+    cam_histogram_data_type data_type;
     cam_histogram_data_t r_stats;
     cam_histogram_data_t b_stats;
     cam_histogram_data_t gr_stats;
@@ -1352,6 +1383,9 @@ typedef struct {
     cam_focus_mode_type focus_mode;        /* focus mode from backend */
     int32_t focus_pos;
     cam_af_flush_info_t flush_info;
+    uint8_t isDepth;
+    float focus_value;
+    uint8_t spot_light_detected;
 } cam_auto_focus_data_t;
 
 typedef struct {
@@ -1442,7 +1476,9 @@ typedef struct {
 typedef struct {
   cam_auto_scene_t      detected_scene;
   uint8_t               max_n_scenes;
-  cam_asd_scene_info_t  scene_info[S_MAX];
+//  xiaomi added 48 custom auto scenes or some other field with total size of 576 bytes
+  cam_asd_scene_info_t  scene_info[S_MAX+48];
+//  volatile char         xiaomi_reserved1[576];
 } cam_asd_decision_t;
 
 
@@ -1633,8 +1669,10 @@ typedef struct {
     uint32_t min_scanline;
     uint8_t batch_size;
     cam_sync_type_t sync_type;
+    uint32_t dt[MAX_NUM_STREAMS];
+    uint32_t vc[MAX_NUM_STREAMS];
+    cam_sub_format_type_t sub_format_type[MAX_NUM_STREAMS];
 } cam_stream_size_info_t;
-
 
 typedef enum {
     CAM_INTF_OVERWRITE_MINI_CHROMATIX_OFFLINE,
@@ -1908,7 +1946,7 @@ typedef enum {
     CAM_INTF_PARM_CDS_MODE,
     CAM_INTF_PARM_TONE_MAP_MODE,
     CAM_INTF_PARM_CAPTURE_FRAME_CONFIG, /* 90 */
-    CAM_INTF_PARM_DUAL_LED_CALIBRATION,
+    CAM_INTF_PARM_LED_CALIBRATION,
     CAM_INTF_PARM_ADV_CAPTURE_MODE,
 
     /* stream based parameters */
@@ -2173,15 +2211,11 @@ typedef enum {
     CAM_INTF_META_TOUCH_AE_RESULT,
     /* Param for updating initial exposure index value*/
     CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,
-    /* Hack 1 to make proper enum */
-    XIAOMI_DUMMY1,
     /* Gain applied post raw captrue.
        ISP digital gain */
     CAM_INTF_META_ISP_SENSITIVITY,
     /* Param for enabling instant aec*/
     CAM_INTF_PARM_INSTANT_AEC,
-    /* Hack 2 to make proper enum */
-    XIAOMI_DUMMY2,
     /* Param for tracking previous reprocessing activity */
     CAM_INTF_META_REPROCESS_FLAGS,
     /* Param of cropping information for JPEG encoder */
@@ -2190,8 +2224,18 @@ typedef enum {
     CAM_INTF_PARM_JPEG_SCALE_DIMENSION,
     /*Param for updating Quadra CFA mode */
     CAM_INTF_PARM_QUADRA_CFA,
-    /* Hack 3 to make proper enum */
-    XIAOMI_DUMMY3,
+    /* Meta Raw Dim */
+    CAM_INTF_META_RAW,
+    /* Number of streams and size of streams in
+       current configuration for pic res*/
+    CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,
+    CAM_INTF_META_FOCUS_DEPTH_INFO,
+    /*Focus value output from af core*/
+    CAM_INTF_META_FOCUS_VALUE,
+    /*Spot light detection result output from af core*/
+    CAM_INTF_META_SPOT_LIGHT_DETECT,
+    /* HAL based HDR*/
+    CAM_INTF_PARM_HAL_BRACKETING_HDR,
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;
 
@@ -2415,6 +2459,8 @@ typedef struct {
 #define CAM_QCOM_FEATURE_PAAF           (((cam_feature_mask_t)1UL)<<32)
 #define CAM_QCOM_FEATURE_QUADRA_CFA     (((cam_feature_mask_t)1UL)<<33)
 #define CAM_QTI_FEATURE_PPEISCORE       (((cam_feature_mask_t)1UL)<<34)
+#define CAM_QCOM_FEATURE_METADATA_BYPASS (((cam_feature_mask_t)1UL)<<35)
+#define CAM_QTI_FEATURE_RTB              (((cam_feature_mask_t)1UL)<<36)
 #define CAM_QCOM_FEATURE_PP_SUPERSET    (CAM_QCOM_FEATURE_DENOISE2D|CAM_QCOM_FEATURE_CROP|\
                                          CAM_QCOM_FEATURE_ROTATION|CAM_QCOM_FEATURE_SHARPNESS|\
                                          CAM_QCOM_FEATURE_SCALE|CAM_QCOM_FEATURE_CAC|\
@@ -2774,6 +2820,7 @@ typedef struct {
     cam_area_t               af_roi;        /* AF roi info */
     /* Information for CPP reprocess */
     cam_dyn_img_data_t       dyn_mask;      /* Post processing dynamic feature mask */
+    int32_t                  frame_number;  /* Backend frame number*/
 } cam_reprocess_info_t;
 
 /***********************************

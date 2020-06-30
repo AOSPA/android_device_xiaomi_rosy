@@ -91,7 +91,7 @@ public:
     uint32_t getMyServerID();
 
     int32_t mapBuf(uint8_t buf_type, uint32_t buf_idx,
-            int32_t plane_idx, int fd, size_t size);
+            int32_t plane_idx, int fd, void *buffer, size_t size);
     int32_t unmapBuf(uint8_t buf_type, uint32_t buf_idx, int32_t plane_idx);
     int32_t setParameter(cam_stream_parm_buffer_t &param);
     cam_stream_info_t* getStreamInfo() const {return mStreamInfo; };
@@ -122,6 +122,7 @@ private:
     cam_padding_info_t mPaddingInfo;
     QCamera3Channel *mChannel;
     Mutex mLock;    //Lock controlling access to 'mBufDefs'
+    Mutex mParamLock;    //Lock setparam
 
     uint32_t mBatchSize; // 0: No batch, non-0: Number of imaage bufs in a batch
     uint8_t mNumBatchBufs; //Number of batch buffers which can hold image bufs
