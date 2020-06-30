@@ -30,7 +30,7 @@
 #define LOG_TAG "QCameraDisplay"
 
 // Camera dependencies
-#include <cutils/properties.h>
+#include <properties.h>
 extern "C" {
 #include "mm_camera_dbg.h"
 }
