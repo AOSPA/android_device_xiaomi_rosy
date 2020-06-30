@@ -165,6 +165,12 @@ typedef struct {
     /* Reserved for future use */
     float      reserved[RELCAM_CALIB_RESERVED_MAX];
 } cam_related_system_calibration_data_t;
+
+typedef struct {
+    int meta_type;
+    int data_len;
+    cam_related_system_calibration_data_t otp_data;
+} cam_otp_data_t;
 #pragma pack()
 
 typedef struct {
@@ -369,7 +375,7 @@ typedef struct{
 
     /* nano seconds */
     int64_t exposure_time_range[EXPOSURE_TIME_RANGE_CNT];
-    volatile char         xiaomi_reserved1[8];
+
     /* nano seconds */
     int64_t max_frame_duration;
 
@@ -504,6 +510,11 @@ typedef struct{
     /* Max size supported by ISP viewfinder path */
     cam_dimension_t max_viewfinder_size;
 
+    /* Max size supported by ISP encoder path */
+    cam_dimension_t max_encoder_size;
+
+    cam_dimension_t bokeh_snapshot_size;
+
     /* Analysis buffer requirements */
     cam_analysis_info_t analysis_info[CAM_ANALYSIS_INFO_MAX];
 
@@ -549,6 +560,14 @@ typedef struct{
 
     /* Dual cam calibration data */
     cam_related_system_calibration_data_t related_cam_calibration;
+
+    /* Meta_RAW capability */
+    uint8_t meta_raw_channel_count;
+    uint8_t vc[MAX_SIZES_CNT];
+    uint8_t dt[MAX_SIZES_CNT];
+    cam_format_t supported_meta_raw_fmts[CAM_FORMAT_MAX];
+    cam_dimension_t raw_meta_dim[MAX_SIZES_CNT];
+    cam_sub_format_type_t sub_fmt[CAM_FORMAT_SUBTYPE_MAX];
 } cam_capability_t;
 
 typedef enum {
@@ -572,9 +591,12 @@ typedef struct {
     uint32_t meta_stream_handle;  /* meta data stream ID. only valid if meta_present != 0 */
     uint32_t meta_buf_index;      /* buf index to meta data buffer. only valid if meta_present != 0 */
 
+    uint8_t is_offline_meta_bypass;
+
     /* opaque metadata required for reprocessing */
     int32_t private_data[MAX_METADATA_PRIVATE_PAYLOAD_SIZE_IN_BYTES];
     cam_rect_t crop_rect;
+    uint8_t is_uv_subsampled;
 } cam_reprocess_param;
 
 typedef struct {
@@ -661,6 +683,16 @@ typedef struct {
 
     /* if frames will not be received */
     uint8_t noFrameExpected;
+
+    /* DT for this stream */
+    int32_t dt;
+
+    /* VC for this stream */
+    int32_t vc;
+
+   /* Subformat for this stream */
+    cam_sub_format_type_t sub_format_type;
+
 } cam_stream_info_t;
 
 /*****************************************************************************
@@ -818,6 +850,8 @@ typedef struct {
     INCLUDE(CAM_INTF_META_LENS_FILTERDENSITY,           float,                       1);
     INCLUDE(CAM_INTF_META_LENS_FOCAL_LENGTH,            float,                       1);
     INCLUDE(CAM_INTF_META_LENS_FOCUS_DISTANCE,          float,                       1);
+    INCLUDE(CAM_INTF_META_FOCUS_VALUE,                  float,                       1);
+    INCLUDE(CAM_INTF_META_SPOT_LIGHT_DETECT,            uint8_t,                     1);
     INCLUDE(CAM_INTF_META_LENS_FOCUS_RANGE,             float,                       2);
     INCLUDE(CAM_INTF_META_LENS_STATE,                   cam_af_lens_state_t,         1);
     INCLUDE(CAM_INTF_META_LENS_OPT_STAB_MODE,           uint32_t,                    1);
@@ -931,9 +965,12 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_LONGSHOT_ENABLE,              int8_t,                      1);
     INCLUDE(CAM_INTF_PARM_TONE_MAP_MODE,                uint32_t,                    1);
     INCLUDE(CAM_INTF_META_TOUCH_AE_RESULT,              int32_t,                     1);
-    INCLUDE(CAM_INTF_PARM_DUAL_LED_CALIBRATION,         int32_t,                     1);
+    INCLUDE(CAM_INTF_PARM_LED_CALIBRATION,              cam_led_calibration_mode_t,  1);
     INCLUDE(CAM_INTF_PARM_ADV_CAPTURE_MODE,             uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_QUADRA_CFA,                   int32_t,                     1);
+    INCLUDE(CAM_INTF_META_RAW,                          cam_dimension_t,             1);
+    INCLUDE(CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,      cam_stream_size_info_t,      1);
+
 
     /* HAL3 specific */
     INCLUDE(CAM_INTF_META_STREAM_INFO,                  cam_stream_size_info_t,      1);
@@ -983,15 +1020,12 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_MANUAL_CAPTURE_TYPE,          cam_manual_capture_type,     1);
     INCLUDE(CAM_INTF_AF_STATE_TRANSITION,               uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,       uint32_t,                    1);
-    INCLUDE(XIAOMI_DUMMY1,                              uint8_t,                     4);
-    INCLUDE(CAM_INTF_PARM_INSTANT_AEC,                  uint8_t,                     1);// BAD +36 OK
-    INCLUDE(CAM_INTF_META_REPROCESS_FLAGS,              uint8_t,                     1);//BAD stock +43 OK
-    volatile char         xiaomi_reserved3[2];
-    INCLUDE(XIAOMI_DUMMY2,                              uint8_t,                     4);
-    INCLUDE(CAM_INTF_PARM_JPEG_ENCODE_CROP,             cam_stream_crop_info_t,      1); // BAD + 4 ?
-    INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1); //BAD stock +44
-    volatile char         xiaomi_reserved4[4];
-    INCLUDE(XIAOMI_DUMMY3,                              uint8_t,                     12);
+    INCLUDE(CAM_INTF_PARM_INSTANT_AEC,                  uint8_t,                     1);
+    INCLUDE(CAM_INTF_META_REPROCESS_FLAGS,              uint8_t,                     1);
+    INCLUDE(CAM_INTF_PARM_JPEG_ENCODE_CROP,             cam_stream_crop_info_t,      1);
+    INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1);
+    INCLUDE(CAM_INTF_META_FOCUS_DEPTH_INFO,             uint8_t,                     1);
+    INCLUDE(CAM_INTF_PARM_HAL_BRACKETING_HDR,           cam_hdr_param_t,             1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to

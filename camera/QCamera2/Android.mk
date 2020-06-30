@@ -87,16 +87,20 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/stack/mm-camera-interface/inc \
         $(LOCAL_PATH)/util \
         $(LOCAL_PATH)/HAL3 \
+        hardware/libhardware/include/hardware \
         hardware/qcom/media/libstagefrighthw \
         hardware/qcom/media/mm-core/inc \
-        $(TARGET_OUT_HEADERS)/mm-camera-lib/cp/prebuilt
+        system/core/include/cutils \
+        system/core/include/system \
+        system/media/camera/include/system
 
 #HAL 1.0 Include paths
 LOCAL_C_INCLUDES += \
         $(LOCAL_PATH)/HAL
 
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 endif
 ifeq ($(TARGET_TS_MAKEUP),true)
 LOCAL_CFLAGS += -DTARGET_TS_MAKEUP
@@ -111,6 +115,7 @@ ifneq (,$(filter msm8996 msmcobalt msmfalcon,$(TARGET_BOARD_PLATFORM)))
 endif
 
 #LOCAL_STATIC_LIBRARIES := libqcamera2_util
+LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
 LOCAL_C_INCLUDES += \
         $(TARGET_OUT_HEADERS)/qcom/display
 LOCAL_C_INCLUDES += \
@@ -118,6 +123,7 @@ LOCAL_C_INCLUDES += \
 LOCAL_SHARED_LIBRARIES := liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
+LOCAL_SHARED_LIBRARIES += libcutils libdl
 ifeq ($(USE_DISPLAY_SERVICE),true)
 LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 libhidlbase libhidltransport
 else
@@ -126,14 +132,6 @@ endif
 ifeq ($(TARGET_TS_MAKEUP),true)
 LOCAL_SHARED_LIBRARIES += libts_face_beautify_hal libts_detected_face_hal
 endif
-LOCAL_HEADER_LIBRARIES += media_plugin_headers
-LOCAL_HEADER_LIBRARIES += libandroid_sensor_headers
-LOCAL_HEADER_LIBRARIES += libcutils_headers
-LOCAL_HEADER_LIBRARIES += libsystem_headers
-LOCAL_HEADER_LIBRARIES += libhardware_headers
-
-LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
-
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
@@ -145,3 +143,4 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 endif
+

@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -24,60 +24,26 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
  */
 
-#ifndef __QCAMERA_BUFFERMAPS_H__
-#define __QCAMERA_BUFFERMAPS_H__
+#ifndef __QCAMERA_MJPEG_DECODE_H
+#define __QCAMERA_MJPEG_DECODE_H
 
-// Camera dependencies
-#include "cam_types.h"
+typedef int MJPEGD_ERR;
+#define MJPEGD_NO_ERROR          0
+#define MJPEGD_ERROR            -1
+#define MJPEGD_INSUFFICIENT_MEM -2
 
-namespace qcamera {
+MJPEGD_ERR mjpegDecoderInit(void**);
 
-class QCameraBufferMaps {
-public:
-    QCameraBufferMaps();
-    QCameraBufferMaps(const QCameraBufferMaps& pBufferMaps);
-    QCameraBufferMaps(const cam_buf_map_type_list& pBufMapList);
-    QCameraBufferMaps(cam_mapping_buf_type pType,
-            uint32_t pStreamId,
-            uint32_t pFrameIndex,
-            int32_t pPlaneIndex,
-            uint32_t pCookie,
-            int32_t pFd,
-            size_t pSize,
-            void *buffer);
+MJPEGD_ERR mjpegDecoderDestroy(void* mjpegd);
 
-    ~QCameraBufferMaps();
+MJPEGD_ERR mjpegDecode(
+            void*   mjpegd,
+            char*   mjpegBuffer,
+            int     mjpegBufferSize,
+            char*   outputYptr,
+            char*   outputUVptr,
+            int     outputFormat);
 
-    QCameraBufferMaps& operator=(const QCameraBufferMaps& pBufferMaps);
-
-    uint32_t enqueue(cam_mapping_buf_type pType,
-            uint32_t pStreamId,
-            uint32_t pFrameIndex,
-            int32_t pPlaneIndex,
-            uint32_t pCookie,
-            int32_t pFd,
-            size_t pSize,
-            void *buffer);
-
-    uint32_t getCamBufMapList(cam_buf_map_type_list& pBufMapList) const;
-
-    static uint32_t makeSingletonBufMapList(cam_mapping_buf_type pType,
-            uint32_t pStreamId,
-            uint32_t pFrameIndex,
-            int32_t pPlaneIndex,
-            uint32_t pCookie,
-            int32_t pFd,
-            size_t pSize,
-            cam_buf_map_type_list& pBufMapList,
-            void *buffer);
-
-private:
-    cam_buf_map_type_list mBufMapList;
-};
-
-}; // namespace qcamera
-#endif /* __QCAMERA_BUFFERMAPS_H__ */
-
+#endif /* __QCAMERA_MJPEG_DECODE_H */

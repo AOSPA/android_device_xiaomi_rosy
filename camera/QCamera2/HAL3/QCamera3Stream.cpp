@@ -378,7 +378,8 @@ int32_t QCamera3Stream::init(cam_stream_type_t streamType,
     if (BAD_INDEX != bufSize) {
         rc = mCamOps->map_stream_buf(mCamHandle,
                 mChannelHandle, mHandle, CAM_MAPPING_BUF_TYPE_STREAM_INFO,
-                0, -1, mStreamInfoBuf->getFd(0), (size_t)bufSize);
+                0, -1, mStreamInfoBuf->getFd(0), (size_t)bufSize,
+                mStreamInfoBuf->getPtr(0));
         if (rc < 0) {
             LOGE("Failed to map stream info buffer");
             goto err3;
@@ -642,7 +643,6 @@ void *QCamera3Stream::dataProcRoutine(void *data)
                     } else {
                         // no data cb routine, return buf here
                         pme->bufDone(frame->bufs[0]->buf_idx);
-                        free(frame);
                     }
                 }
             }
@@ -701,7 +701,8 @@ int32_t QCamera3Stream::bufDone(uint32_t index)
         if (BAD_INDEX != bufSize) {
             LOGD("Map streamBufIdx: %d", index);
             rc = mMemOps->map_ops(index, -1, mStreamBufs->getFd(index),
-                    (size_t)bufSize, CAM_MAPPING_BUF_TYPE_STREAM_BUF, mMemOps->userdata);
+                    (size_t)bufSize, mStreamBufs->getPtr(index),
+                    CAM_MAPPING_BUF_TYPE_STREAM_BUF, mMemOps->userdata);
             if (rc < 0) {
                 LOGE("Failed to map camera buffer %d", index);
                 return rc;
@@ -864,7 +865,8 @@ int32_t QCamera3Stream::getBufs(cam_frame_len_offset_t *offset,
             ssize_t bufSize = mStreamBufs->getSize(i);
             if (BAD_INDEX != bufSize) {
                 rc = ops_tbl->map_ops(i, -1, mStreamBufs->getFd(i),
-                        (size_t)bufSize, CAM_MAPPING_BUF_TYPE_STREAM_BUF,
+                        (size_t)bufSize, mStreamBufs->getPtr(i),
+                        CAM_MAPPING_BUF_TYPE_STREAM_BUF,
                         ops_tbl->userdata);
                 if (rc < 0) {
                     LOGE("map_stream_buf failed: %d", rc);
@@ -1128,6 +1130,7 @@ cam_stream_type_t QCamera3Stream::getMyType() const
  *   @buf_idx  : index of buffer
  *   @plane_idx: plane index
  *   @fd       : fd of the buffer
+ *   @buffer : buffer ptr
  *   @size     : lenght of the buffer
  *
  * RETURN     : int32_t type of status
@@ -1135,12 +1138,12 @@ cam_stream_type_t QCamera3Stream::getMyType() const
  *              none-zero failure code
  *==========================================================================*/
 int32_t QCamera3Stream::mapBuf(uint8_t buf_type, uint32_t buf_idx,
-        int32_t plane_idx, int fd, size_t size)
+        int32_t plane_idx, int fd, void *buffer, size_t size)
 {
     return mCamOps->map_stream_buf(mCamHandle, mChannelHandle,
                                    mHandle, buf_type,
                                    buf_idx, plane_idx,
-                                   fd, size);
+                                   fd, size, buffer);
 
 }
 
@@ -1180,6 +1183,7 @@ int32_t QCamera3Stream::unmapBuf(uint8_t buf_type, uint32_t buf_idx, int32_t pla
 int32_t QCamera3Stream::setParameter(cam_stream_parm_buffer_t &param)
 {
     int32_t rc = NO_ERROR;
+    Mutex::Autolock lock(mParamLock);
     mStreamInfo->parm_buf = param;
     rc = mCamOps->set_stream_parms(mCamHandle,
                                    mChannelHandle,
@@ -1280,7 +1284,8 @@ int32_t QCamera3Stream::getBatchBufs(
             //For USER_BUF, size = number_of_container bufs instead of the total
             //buf size
             rc = ops_tbl->map_ops(i, -1, mStreamBatchBufs->getFd(i),
-                    (size_t)mNumBatchBufs, CAM_MAPPING_BUF_TYPE_STREAM_USER_BUF,
+                    (size_t)mNumBatchBufs, mStreamBatchBufs->getPtr(i),
+                    CAM_MAPPING_BUF_TYPE_STREAM_USER_BUF,
                     ops_tbl->userdata);
             if (rc < 0) {
                 LOGE("Failed to map stream container buffer: %d",
