@@ -52,7 +52,7 @@
 
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
         <Config
-            Id="0x00001083" Enable="true" Timeout="600"
+            Id="0x00001083" Type="1" Enable="true" Timeout="600"
             Resources="0x40800100, 0x7E0" />
 
     <!--Vertical Scroll boost-->
@@ -82,6 +82,21 @@
         <Config
             Id="0x00001080" Type="2" Enable="true"
             Resources="0x40800100, 0x7E0" />
+
+    <!--Panel View boost-->
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
+        <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
+        <!-- SCHEDBOOST resource opcode, value-->
+        <!-- Type="3", Panel View boost -->
+        <Config
+            Id="0x00001080" Type="3" Enable="true" Timeout="80" Target="sdm632"
+            Resources="0x40800100, 0x40C, 0x40800000, 0x446,0x40C00000, 0x2"  />
+
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
+        <Config
+            Id="0x00001080" Type="3" Enable="true"
+            Resources="0x40800100, 0x7E0" />
+
     <!--Pre-Fling boost-->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
@@ -90,6 +105,11 @@
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="80" Target="sdm632"
             Resources="0x40800100, 0x7E0, 0x40800000, 0x446,0x40C00000, 0x2"  />
+
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
+        <Config
+            Id="0x00001080" Type="4" Enable="true"
+            Resources="0x40800100, 0x7E0" />
 
     <!--MTP boost-->
         <!-- SCHEDBOOST resource opcode, value-->
@@ -163,6 +183,7 @@
         <Config
                 Id="0x00001040" Enable="true" Timeout="0" Target="sdm632"
                 Resources="0x40000000, 0x0" />
+
         <!--PackageInstall boost-->
                <!-- SCHEDBOOST resource opcode, value-->
                <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
