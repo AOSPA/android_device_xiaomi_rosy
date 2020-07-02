@@ -67,7 +67,7 @@
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
         <Config
             Id="0x00001080" Type="1" Enable="true"
-            Resources="0x40800100, 0x7E0" />
+            Resources="0x40800100, 0x578" />
 
     <!--Horizontal Scroll boost-->
         <!-- Type="2", Horizontal Scroll boost -->
@@ -82,14 +82,25 @@
         <Config
             Id="0x00001080" Type="2" Enable="true"
             Resources="0x40800100, 0x7E0" />
+
+        <!-- Panel-view boost -->
+        <Config
+            Id="0x00001080" Type="3" Enable="true"
+            Resources="0x40800100, 0x7E0" />
+            
     <!--Pre-Fling boost-->
+        <!-- Type="4", Pre-Fling boost -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
         <!-- SCHEDBOOST resource opcode, value-->
-        <!-- Type="4", Pre-Fling boost -->
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="80" Target="sdm632"
             Resources="0x40800100, 0x7E0, 0x40800000, 0x446,0x40C00000, 0x2"  />
+
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
+        <Config
+            Id="0x00001080" Type="4" Enable="true"
+            Resources="0x40800100, 0x578" />
 
     <!--MTP boost-->
         <!-- SCHEDBOOST resource opcode, value-->
