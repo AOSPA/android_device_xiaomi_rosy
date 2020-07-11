@@ -9,7 +9,8 @@ dalvik.vm.image-dex2oat-filter=speed
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.audio.fluence.voicerec=true
+persist.vendor.audio.fluence.voicerec=true \
+ro.config.vc_call_vol_steps=7
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
