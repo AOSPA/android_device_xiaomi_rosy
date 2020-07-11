@@ -7,6 +7,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 dalvik.vm.dex2oat-filter=speed \
 dalvik.vm.image-dex2oat-filter=speed
 
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.audio.fluence.voicerec=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 bluetooth.hfp.client=1 \
