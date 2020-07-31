@@ -142,6 +142,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2020-06-01
 
+# SELinux
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /vendor/lib/hw/camera.msm8953.so|libshims_camera.so \

@@ -1,0 +1,57 @@
+#============= file_contexts ==============
+# Binaries
+/system/bin/chargeonlymode			u:object_r:charger_exec:s0
+
+# DRM
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service\.clearkey               u:object_r:hal_drm_clearkey_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service\.widevine               u:object_r:hal_drm_widevine_exec:s0
+
+# Files in rootfs
+/bt_firmware(/.*)?       u:object_r:bt_firmware_file:s0
+/firmware(/.*)?          u:object_r:firmware_file:s0
+
+# Fingerprint HIDL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.xiaomi_rosy u:object_r:hal_fingerprint_default_exec:s0
+
+# Fpc Fingerprint
+/data/fpc(/.*)?					u:object_r:fpc_data_file:s0
+/dev/socket/fpce(/.*)?				u:object_r:fpce_socket:s0
+/sys/devices(/platform)?/soc/soc:fpc1020(/.*)?		u:object_r:fpc_sysfs:s0
+
+# Goodix Fingerprint
+/dev/goodix_fp					u:object_r:gx_fpd_device:s0
+/data/gf_data(/.*)?                             u:object_r:gx_fpd_data_file:s0
+/persist/data/gxfp(/.*)?			u:object_r:gx_fpd_data_file:s0
+
+# Input devices
+/(vendor|system/vendor)/usr/idc(/.*)?                         u:object_r:idc_file:s0
+/(vendor|system/vendor)/usr/keylayout(/.*)?                   u:object_r:keylayout_file:s0
+
+# IR
+/dev/spidev6\.1				u:object_r:spidev_file:s0
+/dev/spidev7\.1				u:object_r:spidev_file:s0
+
+# Light HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.xiaomi_rosy u:object_r:hal_light_default_exec:s0
+
+# Location
+/data/vendor/location/xtra/socket_hal_xtra    u:object_r:location_socket:s0
+
+# Rild
+/(vendor|system/vendor)/radio/qcril_database/qcril.db			u:object_r:rild_file:s0
+
+# Same process hal files
+/(product|system/product)/lib(64)?/vendor\.display\.config@[0-9]\.[0-9]\.so				u:object_r:same_process_hal_file:s0
+/(product|system/product)/lib(64)?/vendor\.qti\.hardware\.camera\.device@1\.0\.so			u:object_r:same_process_hal_file:s0
+/(product|system/product)/lib(64)?/vendor\.qti\.hardware\.cryptfshw@1\.0\.so			u:object_r:same_process_hal_file:s0
+
+# Shell Script
+/(vendor|system/vendor)/bin/init\.goodix\.sh    u:object_r:init_fingerprint_exec:s0
+
+# Sysfs
+/sys/devices(/platform)?/soc/78b6000\.i2c/i2c-2/2-[0-9a-f]+/leds(/.*)?		u:object_r:sysfs_leds:s0
+/sys/devices(/platform)?/soc/leds-qpnp-[0-9]+/leds(/.*)?				u:object_r:sysfs_leds:s0
+/sys/devices/virtual/sensors(/.*)?                      u:object_r:sysfs_sensors:s0
+
+# Power
+/vendor/bin/hw/android\.hardware\.power@1\.2-service          u:object_r:hal_power_default_exec:s0

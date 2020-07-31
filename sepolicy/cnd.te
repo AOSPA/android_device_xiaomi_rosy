@@ -1,0 +1,2 @@
+#============= cnd ==============
+allow cnd sysfs:file read;
