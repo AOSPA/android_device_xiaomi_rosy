@@ -180,6 +180,9 @@ vendor.camera.lowpower.record.enable=1
 persist.vendor.camera.display.umax=1920x1080
 persist.vendor.camera.display.lmax=1280x720
 
+# Paranoid Doze
+ro.sensor.proximity=true
+
 #expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
 
