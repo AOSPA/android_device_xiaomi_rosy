@@ -153,6 +153,9 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service
 
 # GPS
+include $(TOPDIR)hardware/qcom/gps/gps_vendor_board.mk
+include $(TOPDIR)hardware/qcom/gps/gps_vendor_product.mk
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
     $(LOCAL_PATH)/configs/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
