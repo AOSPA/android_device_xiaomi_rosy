@@ -152,6 +152,10 @@ TARGET_TAP_TO_WAKE_EVENT_NODE := "/dev/input/event2"
 GENERIC_TAP_TO_WAKE_NODE := "/dev/input/event4"
 TARGET_USES_NON_LEGACY_POWERHAL := true
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
 
