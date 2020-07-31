@@ -254,6 +254,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# QTI common
+TARGET_COMMON_QTI_COMPONENTS := bt perf
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
