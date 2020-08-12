@@ -243,14 +243,14 @@ function 8953_sched_dcvs_hmp()
     echo "19000 1401600:39000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
     echo 80 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
     echo 20000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    echo 180400 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    echo 1804800 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
     echo "85 1401600:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
     echo 39000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
     echo 40000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
     echo 19 > /proc/sys/kernel/sched_upmigrate_min_nice
-    echo "0:1401600" > /sys/module/cpu_boost/parameters/input_boost_freq
-    echo 250 > /sys/module/cpu_boost/parameters/input_boost_ms
+    echo "0:1804800" > /sys/module/cpu_boost/parameters/input_boost_freq
+    echo 150 > /sys/module/cpu_boost/parameters/input_boost_ms
     # Enable sched guided freq control
     echo 1 > /sys/devices/system/cpu/cpufreq/interactive/use_sched_load
     echo 1 > /sys/devices/system/cpu/cpufreq/interactive/use_migration_notif
