@@ -2108,31 +2108,31 @@ vendor/lib/libvqzip.so|c2cf1d2938c7af82bf011c8d371dfa8ae6cb038e
 vendor/lib/libwms.so|6ca1fb9b262ecc8370f081e8f19490806c1f88b8
 vendor/lib64/libwms.so|e34c20183b439eef191e382da4af4bd6aca06e9a
 
-# Performance - from LA.UM.8.6.r1-04400-89xx.0
-vendor/bin/hw/vendor.qti.hardware.iop@2.0-service|4feef0594e37733abb2c4c7b8de0f869efc53413
-vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|6e45f0e5ee264d6b272daf50481770bf013b602e
+# Performance - LA.UM.8.6.2.r1-08100-89xx.0.
+vendor/bin/energy-awareness|056792da4f0bcfc34b1f85e3ee67820d8c80627f
+vendor/bin/hw/vendor.qti.hardware.iop@2.0-service|e3257b0a7fb944c471eb98623427630b6423fd24
+vendor/bin/hw/vendor.qti.hardware.perf@2.1-service|2e3be88cad2d9b9aa4edc8e68ad5f4d4e7eeaedc
+vendor/bin/msm_irqbalance|0e967f5c7eaf8d863a50996459101be47adf96a2
 vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc|fd11367b2585702190ef2577ce2ce6fc68f3a2f8
-vendor/bin/msm_irqbalance|b5e55b4b0934b65b7dd5d2201f9a70f6f77a4e7c
-vendor/bin/energy-awareness|def07e366347c7f0a7778b748acb49557ab21d2a
-vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
-vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|873eb543fa49d0e9f5f7b29aa82906aee2fbea94
-vendor/lib/libperfconfig.so|98bdc89aea45719484980e4c22c7af75926650e9
-vendor/lib/libperfgluelayer.so|1226abb3e16d659d2786e1dfad03020b91ee822b
-vendor/lib/libqti-perfd-client.so|0bfd938e82f79e0a28b2ab6c4755b089cb1785b6
-vendor/lib/libqti-perfd.so|69290801f8ba06428fd6c0a408dd9820a744081f
-vendor/lib/libqti-util.so|5baec080c5c5c26778d2242bfc0e570ca92b7724
-vendor/lib/libskewknob.so|69f5db82a56995bf43acc422827febf024dc81aa
-vendor/lib/vendor.qti.hardware.iop@2.0.so|c6b6cb9786005f91ae1cb4171f6c6c367fdc4b7f
-vendor/lib/vendor.qti.hardware.perf@2.0.so|71592601eed5e022f4979293d68deb98e688a3d4
-vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|617cae9c6204294f6f0449a7299e214fbd8fc3cb
-vendor/lib64/libperfconfig.so|15414e449302575cd9bae3c1e4464e6e695bd5b3
-vendor/lib64/libperfgluelayer.so|5dc01df9fb465e67cb0f1e7a225dee85e660cc4a
-vendor/lib64/libqti-perfd-client.so|0cf43512b08ee761fafa86d09bdea4f7b78fcea9
-vendor/lib64/libqti-perfd.so|a0757a68b49b33b6893e586153a8967c1ca8bd3d
-vendor/lib64/libqti-util.so|55219f860b7a39dbcc2947e382355fd71ad8087d
-vendor/lib64/libskewknob.so|e87b8253d52e62d75a5bc4f490cca3ab2dbbc83c
-vendor/lib64/vendor.qti.hardware.iop@2.0.so|70bd46ab49f53f0af5b5379d5e4b98c25fc775b1
-vendor/lib64/vendor.qti.hardware.perf@2.0.so|9353709cc2e2af8c4edd3967b5362ede79a72805
+vendor/etc/init/vendor.qti.hardware.perf@2.1-service.rc|0d7eaa2a99b16738f4e40d7ee7473bb0dd705d2c
+vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|6e42e6b3555e47c730a69fd5522099c5729b272a
+vendor/lib/libperfconfig.so|fff23537940b4849ce805539060e4b75cfc22593
+vendor/lib/libperfgluelayer.so|6ab754c780858b668f8b45c7d222a0bf3d9ecda3
+vendor/lib/libqti-iopd-client.so|30c7d57636921ddcec6df17fcb378a4a04eefe42
+vendor/lib/libqti-perfd-client.so|99d542254fb5d4dc3fe2f5432c5ac4845995f75b
+vendor/lib/libqti-perfd.so|75035d4036104328fb3f6a74dfef01e893cb8291
+vendor/lib/libqti-util.so|7f1b080e1d5c2e03261b80699232b3153146d215
+vendor/lib/vendor.qti.hardware.iop@2.0.so|4e2930e43b93b97dcf30d19e2c7bca460aa30d7f
+vendor/lib/vendor.qti.hardware.perf@2.1.so|80557dc1b6841be7d24b1ceeafa9b512390205b6
+vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|1f087eb93b9ce0f0ee7fdaf6351f5f71f7db1150
+vendor/lib64/libperfconfig.so|065fdf48973f68b66b57b54e7be3cc664e97933e
+vendor/lib64/libperfgluelayer.so|152cf86d26137536b7c20ca99d7efec5d1375324
+vendor/lib64/libqti-iopd-client.so|fc9878267908f9843882891f902c4d37fee760dd
+vendor/lib64/libqti-perfd-client.so|7089fa216b06fc78127b51df6cade6518886a463
+vendor/lib64/libqti-perfd.so|6c041cd7f3d640b500fb2253ba93a253e12ffd31
+vendor/lib64/libqti-util.so|45a80be449435d277f09cc59e4a315fa86072c41
+vendor/lib64/vendor.qti.hardware.iop@2.0.so|3e3fefb8ed943e09fc09c8a6dd6cc7991cb8f2e5
+vendor/lib64/vendor.qti.hardware.perf@2.1.so|1020f58f1a5b3bb82e2935b599aa51ce7a9efda9
 
 # Peripheral - LA.UM.8.6.2.r1-08100-89xx.0.
 vendor/bin/pm-proxy|6317be13e38a4f7e5005ef544ab36bc7fe9cc3fd
