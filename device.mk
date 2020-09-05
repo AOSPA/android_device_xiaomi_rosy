@@ -279,6 +279,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.recovery.qcom.usb.rc \
     init.rosy.rc \
+    init.msm.usb.configfs.rc \
     init.target.rc \
     ueventd.qcom.rc
 
