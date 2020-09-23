@@ -372,6 +372,10 @@ on post-fs-data
     mkdir /data/vendor/swap 0770 root system
     chmod 2770 /data/vendor/swap
 
+    # DT2W Node
+    chown system system /proc/gesture/onoff
+    chmod 0660 /proc/gesture/onoff
+
     # Sensors
     chmod 0775 /persist/sensors
     chmod 0664 /persist/sensors/sensors_settings
