@@ -33,6 +33,10 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
+# Use libcutils-v29.so for libdpmframework.so
+BLOB_DPM_FRAMEWORK="$DEVICE_BLOB_ROOT"/product/lib64/libdpmframework.so
+        sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/" "$BLOB_DPM_FRAMEWORK"
+
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=false
 
