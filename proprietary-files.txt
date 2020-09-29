@@ -2031,7 +2031,6 @@ vendor/bin/slim_daemon|cbec0683e1ff1c925f58173fae3ec900c0bc279a
 vendor/bin/xtra-daemon|dc3a371d126d0e87cdc3c8cf64a7828b2bb98ce8
 vendor/bin/xtwifi-client|61a229fefe637601cc43627857d60640727ba97e
 vendor/bin/xtwifi-inet-agent|b738b9d19afff4e8c317e2dfedd3ae3668a68caa
-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
 vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|4c97255e23e06f58f95b00840b306926bea07407
 vendor/lib64/libdataitems.so|af5f0d8f90f3a2637d159f30a448b501882295b4
 vendor/lib64/libgdtap.so|2b681900f4f0302c0c3be949999c08bb8dac906e
