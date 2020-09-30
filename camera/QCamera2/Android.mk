@@ -120,7 +120,10 @@ LOCAL_SHARED_LIBRARIES := liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
 ifeq ($(USE_DISPLAY_SERVICE),true)
-LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 libhidlbase libhidltransport
+LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 android.hidl.base@1.0 libhidlbase
+  ifneq ($(filter P% p% Q% q%,$(TARGET_PLATFORM_VERSION)),)
+    LOCAL_SHARED_LIBRARIES += libhidltransport
+  endif
 else
 LOCAL_SHARED_LIBRARIES += libgui
 endif
