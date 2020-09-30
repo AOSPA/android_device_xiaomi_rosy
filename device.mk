@@ -324,7 +324,7 @@ PRODUCT_COPY_FILES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    vndk-sp
+    vndk_package
 
 # Vibrator
 PRODUCT_PACKAGES += \
