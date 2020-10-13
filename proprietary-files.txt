@@ -2416,13 +2416,9 @@ vendor/lib/libtime_genoff.so|8f182be148c0cd0f4e2d00563494d892293df821
 vendor/lib64/libtime_genoff.so|216cbb72e22a0ca76d766dc0b84055c5b31e0a4c
 
 # Thermal - from Daisy (QKQ1.191002.002)
-vendor/bin/hw/android.hardware.thermal@1.0-service|54200e0477daddea2f2d095c51a01976c73888af
 vendor/bin/thermal-engine|4ab3c410fbcf9f8cae711ea4ba16cd2797712de6
-vendor/etc/init/android.hardware.thermal@1.0-service.rc|83a76be56b9b0843ff3f2c06186c63156a459acb
-vendor/lib/hw/android.hardware.thermal@1.0-impl.so|729df603503bc9e94cb208d266b36655678d8e38
 vendor/lib/hw/thermal.msm8953.so|84b9a3744daca1fff62fe0e90fdc58c773a3009e
 -vendor/lib/libthermalclient.so|6077e27e15d9e3e43fa57d6d5405c49284f48949
-vendor/lib64/hw/android.hardware.thermal@1.0-impl.so|ddc530f8449450872c184912e9207be89bcfeac7
 vendor/lib64/hw/thermal.msm8953.so|5aba51d60cf944fc1b5dfbbffb2a6612548fd0ff
 -vendor/lib64/libthermalclient.so|12b26d4242b1a8913ddcb511f42a1debb83689af
 vendor/lib64/libthermalfeature.so|829b2fc0aa8c863d4b4b331e0a2c00663e01efe6
