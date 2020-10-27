@@ -59,16 +59,14 @@ vendor/lib64/soundfx/libqcbassboost.so|20b068ac79d1b82d142198e6d89691116e2c7933
 vendor/lib64/soundfx/libqcreverb.so|5d0cdc71dc53d9400028a238cd534ddb59b050f0
 vendor/lib64/soundfx/libqcvirt.so|e2306fd49f0dff95c899797286e81bff2600401c
 
-# ACDB - from rosy:8.1.0/OPM1.171019.026/9.4.25
-vendor/etc/acdbdata/adsp_avs_config.acdb|ac0616af3b2d4f070c0e54c18126a877e528621b
-vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb|69d97d52c5ff2a47ef13aeded96af7c5c78e3b13
-vendor/etc/acdbdata/MTP/MTP_General_cal.acdb|6f6fe990add3c3d5e096a345dad151a134c437b8
-vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb|cd62dfc80137bee694529f3206f97d7f5c4b1978
-vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb|dee549610c24d9e35012dc883278ab7a58ce99bb
-vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb|a44c60fe0d65c73366e35c5c19d0195c77c458f0
-vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb|42c1c655c3b0038208a626132dfb063ae57fef03
-vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb|ac0f6d164cec18c2fef3992a6c22aca2bcf16f08
-vendor/etc/acdbdata/MTP/MTP_workspaceFile.qwsp|921ca227bc413a69c1ff0075f0a20c7f0ec86566
+# ACDB - Homemade :)
+vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb|e421785eafd170cfb5848d05964f8ccdf68804f3
+vendor/etc/acdbdata/MTP/MTP_General_cal.acdb|96b80424ed824b33c76347e4dae435613cecebfc
+vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb|5b776b3af959ed17e6ce4a35753aef3671992618
+vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb|99f9b6711d437b90d60c80a3fa58fad46db2d53e
+vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb|8ed06278eaa5b43fd5cccb702828299f2053c9ab
+vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb|82b0a4fc4bc78f5aeb7dee56efcd9acbc107e68f
+vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb|6642979a79e5e6e8e33617ec01d3fae45480f8de
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_Bluetooth_cal.acdb|38c6e7d42ae194d238198e33fdb1c3f525e5a326
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_General_cal.acdb|aa13ec31e85bae208ab5a9723dc1aa6dff041b6d
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_Global_cal.acdb|c608e52607c2389eb3f52f2053c98438ebcdff10
@@ -77,6 +75,7 @@ vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_Hdmi_cal.acdb|be7fc11
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_Headset_cal.acdb|9129d83bc6363a2a67d6a7a216cc2fd95c64a84d
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_Speaker_cal.acdb|0507d4aded452d3c948f588240109c77b5f91372
 vendor/etc/acdbdata/MTP/msm8953-tasha-snd-card/MTP_WCD9335_workspaceFile.qwsp|90182e8da8b719099bfc1db6b6d70623307f55ff
+vendor/etc/acdbdata/adsp_avs_config.acdb|2b1d37be4e69445802b1a3165e7a23de5b6c93c8
 
 # Adreno - LA.UM.8.6.2.r1-08100-89xx.0.
 vendor/lib/egl/eglSubDriverAndroid.so|18cd5ef88b08d3dcf04de7e3698127e2ff7637ad
